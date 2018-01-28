@@ -1,4 +1,6 @@
 class UsuariosController < ApplicationController
+  before_action :usuario_logado, only: [:new, :create]
+  before_action :usuario_nao_logado, except: [:new, :create]
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
   # GET /usuarios
@@ -28,11 +30,11 @@ class UsuariosController < ApplicationController
 
     respond_to do |format|
       if @usuario.save
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
-        format.json { render :show, status: :created, location: @usuario }
+        flash[:notice] = "Bemvindo à Noticas IN."
+        log_in @usuario
       else
-        format.html { render :new }
-        format.json { render json: @usuario.errors, status: :unprocessable_entity }
+        flash.now[:notice] = "Algo errado aconteceu"
+        render "new"
       end
     end
   end
@@ -69,6 +71,6 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:nome, :sobrenome, :email, :telefone, :data_nascimento)
+      params.require(:usuario).permit(:nome, :sobrenome, :email, :telefone, :data_nascimento, :password, :password_confirmation)
     end
 end

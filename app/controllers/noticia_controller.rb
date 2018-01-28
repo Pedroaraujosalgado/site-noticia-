@@ -1,4 +1,5 @@
 class NoticiaController < ApplicationController
+  before_action :usuario_nao_logado
   before_action :set_noticium, only: [:show, :edit, :update, :destroy]
 
   # GET /noticia
