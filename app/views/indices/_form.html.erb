@@ -1,0 +1,37 @@
+<%= form_with(model: index, local: true) do |form| %>
+  <% if index.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(index.errors.count, "error") %> prohibited this index from being saved:</h2>
+
+      <ul>
+      <% index.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :titulo_id %>
+    <%= form.text_field :titulo_id, id: :index_titulo_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usuario_id %>
+    <%= form.text_field :usuario_id, id: :index_usuario_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :categoria_id %>
+    <%= form.text_field :categoria_id, id: :index_categoria_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_hora %>
+    <%= form.datetime_select :data_hora, id: :index_data_hora %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

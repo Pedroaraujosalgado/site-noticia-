@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @index.titulo %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @index.usuario %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @index.categoria %>
+</p>
+
+<p>
+  <strong>Data hora:</strong>
+  <%= @index.data_hora %>
+</p>
+
+<%= link_to 'Edit', edit_index_path(@index) %> |
+<%= link_to 'Back', indices_path %>
